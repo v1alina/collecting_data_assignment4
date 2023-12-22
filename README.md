@@ -20,16 +20,21 @@ I decided to gather some metadata on the selected corpus of 16 songs. The follow
 
 ## Cleaning and preprocessing
 
-To be added 
+I took no extra steps of cleaning or preprocessing the texts. The texts downloaded from Genius already contain some extra information and are not completely 'raw' as sections are labeled according to the song structure (e.g. "chorus","verse 1", "outro", etc.)
 
 ## Annotations added and tools used
 
-To be added 
+
+
+The annotations were added using a spacy Jupyter Notebook tutorial. Some notes were added to evaluate and comment on the quality of the annotations.
 
 ## Format of corpus files
 
-To be added
+The final csv-file contains the following rows:
+
+| Filename | length |release_year | ablum_title | Text | Doc | Tokens | Lemmas | POS | Proper_Nouns | Named_Entities | NE_Words
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 
 ## Quality checks
 
-- 
+There were no final quality checks added, but I would not recommend using the annotated corpus as many annotations seem to be incorrect. For instance, vocalizations such as 'la-la-la' are recognized as persons or organisation by the spacy annotations. It seems that spacy is struggling with annotating a lyrcial corpus.

@@ -20,21 +20,29 @@ I decided to gather some metadata on the selected corpus of 16 songs. The follow
 
 ## Cleaning and preprocessing
 
-I took no extra steps of cleaning or preprocessing the texts. The texts downloaded from Genius already contain some extra information and are not completely 'raw' as sections are labeled according to the song structure (e.g. "chorus","verse 1", "outro", etc.)
+The texts downloaded from Genius already contain some extra information and are not completely 'raw' as sections are labeled according to the song structure (e.g. "chorus","verse 1", "outro", etc.). Therefore, I decided to use this annotation for creating the different song parts and adding them to our CSV file. This way, we can for instance compare all the choruses in the corpus. Additionally, after the creation of the song parts, I removed the brackets indicating the song parts to get the 'raw' lyric text. I reassign this to the `Text` column and only tokenized and lemmatized this part. 
 
 ## Annotations added and tools used
 
 
-
-The annotations were added using a spacy Jupyter Notebook tutorial. Some notes were added to evaluate and comment on the quality of the annotations.
+The annotations were added using a spaCy Jupyter Notebook tutorial. Some notes were added to evaluate and comment on the quality of the annotations.
 
 ## Format of corpus files
 
 The final csv-file contains the following rows:
 
-| Filename | length |release_year | ablum_title | Text | Doc | Tokens | Lemmas | POS | Proper_Nouns | Named_Entities | NE_Words
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Column | Description |
+| --- | --- |
+| Filename | 
+| length | length in minutes 
+| release_year | year of release |
+| ablum_title | Title of the release (can also be an EP or Single) |
+| Text | Cleaned lyric |
+| Song Part | As the Genius lyrics were annotated, I assigned the lyrics to the part they belong to, i.e. "verse_1" or "chorus" |
+| Doc | The doc element created using spaCy |
+| Tokens | Tokenization of the entire text |
+| Lemmas | Lemmatization of the entire text |
 
 ## Quality checks
 
-There were no final quality checks added, but I would not recommend using the annotated corpus as many annotations seem to be incorrect. For instance, vocalizations such as 'la-la-la' are recognized as persons or organisation by the spacy annotations. It seems that spacy is struggling with annotating a lyrcial corpus.
+The doc element created with the used spaCy pipeline contained some errors with the more complex corpus annotation tasks. For instance, for Named Entity Recognition (NER) vocalizations such as 'la-la-la' are recognized as persons or organisation by spaCy. It seems that spaCy is struggling with annotating a lyrcial corpus, which might be due to a lack of lyrical training material of the pipeline. I therefore decided to remove these annotations in the updated version so that the enriched CSV file only contains well processed annotations. Concretely, this means that the updated CSV file now does not contain the following columns anymore:  `Proper_nouns`, `POS`, `NER`. More explanation is given in the Juypter Notebook. 

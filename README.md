@@ -33,8 +33,8 @@ The final csv-file contains the following rows:
 
 | Column | Description |
 | --- | --- |
-| Filename | 
-| length | length in minutes 
+| Filename | Filename |
+| length | length in minutes |
 | release_year | year of release |
 | ablum_title | Title of the release (can also be an EP or Single) |
 | Text | Cleaned lyric |
@@ -45,4 +45,5 @@ The final csv-file contains the following rows:
 
 ## Quality checks
 
-The doc element created with the used spaCy pipeline contained some errors with the more complex corpus annotation tasks. For instance, for Named Entity Recognition (NER) vocalizations such as 'la-la-la' are recognized as persons or organisation by spaCy. It seems that spaCy is struggling with annotating a lyrcial corpus, which might be due to a lack of lyrical training material of the pipeline. I therefore decided to remove these annotations in the updated version so that the enriched CSV file only contains well processed annotations. Concretely, this means that the updated CSV file now does not contain the following columns anymore:  `Proper_nouns`, `POS`, `NER`. More explanation is given in the Juypter Notebook. 
+The doc element created with the used spaCy pipeline contained some errors with the more complex corpus annotation tasks. For instance, for Named Entity Recognition (NER) vocalizations such as 'la-la-la' are recognized as persons or organisation by spaCy. It seems that spaCy is struggling with annotating a lyrcial corpus, which might be due to a lack of lyrical training material of the pipeline. I therefore decided to remove these annotations in the updated version so that the enriched CSV file only contains well processed annotations. Concretely, this means that the updated CSV file now does not contain the following columns anymore:  `Proper_nouns`, `POS`, `NER`. 
+Further explanation is given in the Juypter Notebook. 
